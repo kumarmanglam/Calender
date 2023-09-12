@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./modalStyle.css";
+
 function Modal({ onClose, onAddFestival }) {
   //Using state to double bind inputs
   const [title, setTitle] = useState("");

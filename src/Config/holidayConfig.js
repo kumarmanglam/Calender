@@ -1,5 +1,3 @@
-// holidaysConfigIndia.js
-
 const HOLIDAYS_IN_INDIA_2023 = [
   {
     date: "2023-01-26",

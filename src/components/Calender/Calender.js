@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MONTHS from "../../Config/CalenderConfig";
 import HOLIDAYS_IN_INDIA_2023 from "../../Config/holidayConfig";
+import WEEKDAYS from "../../Config/WeekdaysConfig";
 import "./calenderStyle.css";
 import DayBox from "../DayBox/DayBox";
 import Modal from "../Modal/modal";
@@ -9,6 +10,7 @@ function Calender() {
   //using state to maintain current month data displayed on screen
   const [currentMonth, setCurrentMonth] = useState(0);
   //logic to change month when button left or right is clicked
+
   function changeMonth(change) {
     if (change === false) {
       setCurrentMonth((prev) => {
@@ -26,11 +28,7 @@ function Calender() {
       });
     }
   }
-  //Every month's number of days
-  const daysArray = Array.from(
-    { length: MONTHS[currentMonth].days },
-    (_, i) => i + 1
-  );
+
   //made holidays saved in state so that it can updated and re-render
   const [holidays, setHolidays] = useState(HOLIDAYS_IN_INDIA_2023);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -64,6 +62,36 @@ function Calender() {
     setHolidays(updatedHolidays);
     localStorage.setItem("holidays_2023", JSON.stringify(updatedHolidays));
   };
+  const [daysArray, setDaysArray] = useState([]);
+  useEffect(() => {
+    const DateX = new Date(2023, currentMonth, 1); // Date of the first day of the month
+    const day = DateX.getDay(); // Which day of the week the first day of the month is
+
+    // Every month's number of days
+    const daysInMonth = Array.from(
+      { length: MONTHS[currentMonth].days },
+      (_, i) => i + 1
+    );
+
+    // Create an array of nulls based on which day of the week the first day is
+    const leadingEmptyDays = Array(day).fill(null);
+
+    // Combine the arrays
+    const combinedArray = [...leadingEmptyDays, ...daysInMonth];
+    // updating the state of days
+    setDaysArray(combinedArray);
+    //console for debugging
+    console.log(
+      "Month:",
+      currentMonth,
+      "firstday",
+      day,
+      "nulls",
+      leadingEmptyDays.length,
+      "Days Array Length:",
+      combinedArray.length
+    );
+  }, [currentMonth]);
 
   return (
     <div className="container">
@@ -87,6 +115,13 @@ function Calender() {
         />
       )}
       <div className="days-grid">
+        {WEEKDAYS?.map((day) => {
+          return (
+            <div key={day} className="weekday">
+              {day}
+            </div>
+          );
+        })}
         {daysArray.map((day) => {
           const formattedDate = `2023-${(MONTHS[currentMonth].number + 1)
             .toString()

@@ -1,5 +1,3 @@
-// monthsConfig.js
-
 const MONTHS = [
   {
     name: "January",
