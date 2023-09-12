@@ -1,0 +1,11 @@
+.page {
+  background-color: #edeff2;
+  height: 100vh;
+}
+.pageTitle {
+  padding-top: 50px;
+  padding-left: 50px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #797c8a;
+}

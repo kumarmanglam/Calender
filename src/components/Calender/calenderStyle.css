@@ -1,0 +1,73 @@
+.container {
+  width: 900px;
+  margin: auto;
+  margin-top: 20px;
+}
+.days-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: white;
+  border-radius: 15px;
+}
+.day-head {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  text-align: center;
+}
+.day {
+  text-align: center;
+  padding: 5px;
+  height: 80px;
+  border: 0.5px solid #edeff2;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+.day:hover {
+  background-color: lightblue;
+}
+.holiday {
+  font-size: 10px;
+  color: red;
+}
+.month-actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 15px;
+  margin-inline: auto;
+}
+.change-month {
+  font-size: 1.4rem;
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+}
+.btn {
+  cursor: pointer;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 5px;
+  color: grey;
+}
+.btn-add {
+  cursor: pointer;
+  border: none;
+  font-size: 0.5rem;
+  padding: 3px;
+  border-radius: 5px;
+  background-color: white;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  height: 15px;
+}
+.weekday {
+  padding: 5px;
+  text-align: center;
+}
